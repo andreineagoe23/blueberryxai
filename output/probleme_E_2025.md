@@ -11,7 +11,7 @@
 ## Figuri care nu sunt ok
 
 - **mcr** (lipsă), Cerința de capital minim (MCR): celula Capital!C11 este goală; pe rând scrie «în lucru, actuariat» (Capital!E11)
-- **solvency_ratio_reported** (conflict), Rata de solvabilitate, așa cum e introdusă în registru: registru_2025.xlsx!Capital!C12 = 1.874 este identică cu valoarea din registru_2024.xlsx (registru_2024.xlsx!Capital!C11); probabil nu a fost actualizată
+- **solvency_ratio_reported** (conflict), Rata de solvabilitate, așa cum e introdusă în registru: registru_2025.xlsx!Capital!C12 este identică cu valoarea din registru_2024.xlsx (registru_2024.xlsx!Capital!C11); probabil nu a fost actualizată
 
 ## Decizii din config/decisions.toml
 
@@ -20,7 +20,7 @@
 
 ## Verificări eșuate sau care nu au putut rula
 
-- **diferit-de-N-1:solvency_ratio_reported** (eșuat): registru_2025.xlsx!Capital!C12 = 1.874 este identică cu valoarea din registru_2024.xlsx (registru_2024.xlsx!Capital!C11); probabil nu a fost actualizată
+- **diferit-de-N-1:solvency_ratio_reported** (eșuat): registru_2025.xlsx!Capital!C12 este identică cu valoarea din registru_2024.xlsx (registru_2024.xlsx!Capital!C11); probabil nu a fost actualizată
 - **mcr-coridor** (nu s-a putut rula): mcr: celula Capital!C11 este goală; pe rând scrie «în lucru, actuariat» (Capital!E11)
 - **calcul:solvency_ratio** (eșuat): raportat 187,4 % (registru_2025.xlsx!Capital!C12), calculat 197,4 % (registru_2025.xlsx!Capital!C8 / registru_2025.xlsx!Capital!C10)
 

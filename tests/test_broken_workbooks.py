@@ -36,7 +36,7 @@ def test_real_workbook(run):
     assert "293,7 mil. lei" in a.draft.text and "197,4 %" in a.draft.text
     assert "în scădere față de 151,9 mil. lei la sfârșitul anului 2024, în principal ca urmare a scăderii " \
            "riscului de piață" in a.draft.text
-    assert para(a, "[de completat: Cerința de capital minim")
+    assert para(a, "[de completat: MCR:")
     assert "acoperită integral" not in a.draft.text.replace("«a fost acoperită integral»", "")
     assert ("Capital_vechi", "foaie ascunsă (titlu «NU SE FOLOSEȘTE (copie 2024)»)") in a.wb.ignored
     assert_no_2024_figures(a)
@@ -168,7 +168,7 @@ def test_mcr_not_covered_by_tier_1_alone(run):
 def test_mcr_outside_corridor(run):
     a = run(lambda wb: wb["Capital"].__setitem__("C11", 148763.2))
     assert a.facts["mcr"].status == "conflict"
-    assert para(a, "[de completat: Cerința de capital minim")
+    assert para(a, "[de completat: MCR:")
 
 
 def test_mcr_copied_from_last_year(run):
@@ -328,7 +328,7 @@ def test_mcr_typed_as_text(run):
     a = run(lambda wb: wb["Capital"].__setitem__("C11", "44.629,0"))
     assert a.facts["mcr"].status == "uncertain"
     assert "44,6" not in a.draft.text
-    assert para(a, "[de completat: Cerința de capital minim")
+    assert para(a, "[de completat: MCR:")
 
 
 def test_diversification_typed_negative(run):
@@ -338,3 +338,14 @@ def test_diversification_typed_negative(run):
     a = run(change)
     assert any(r.id == "scr-baza-din-module" and r.result == "trecut" for r in a.results)
     assert "148,8 mil. lei" in scr_para(a)
+
+
+def test_gaps_in_the_draft_are_short(run):
+    # Report rule 3: a short, concrete reason in the draft; the full one stays in the issues list.
+    for change in (None, lambda wb: wb["Capital"].__setitem__("A2", None),
+                   lambda wb: wb["SCR_module"].__setitem__("C11", 150000)):
+        a = run(change)
+        for g in re.findall(GAP_RE, a.draft.text):
+            assert len(g) <= 250 and ".xlsx" not in g and "„" not in g, g
+        if change is None:  # the whole quote is still in the issues list
+            assert any("„Calculul cerinței de capital minim" in reason for _, reason in a.draft.gaps)

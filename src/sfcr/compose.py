@@ -21,11 +21,24 @@ def gap(reason: str) -> str:
     return f"[de completat: {reason}]"
 
 
+def brief(reason: str) -> str:
+    """The reason as written in the draft (report rule 3: short and concrete).
+
+    The full reason, with file names and whole quotes, stays in the issues list."""
+    reason = re.sub(r"\b[\w.-]+\.xlsx!", "", reason)
+    return re.sub(r"«[^»]{50,}»", "«…»", reason)
+
+
 @dataclass
 class Slot:
     text: str | None = None
-    reason: str | None = None  # set when the slot is a gap
+    reason: str | None = None  # set when the slot is a gap: the full reason, for the issues list
     placements: list = field(default_factory=list)  # (fact id, number text as in the draft)
+    short: str | None = None  # the reason in the draft, if shorter than brief(reason)
+
+    @property
+    def shown(self) -> str:
+        return self.short or brief(self.reason)
 
 
 @dataclass
@@ -36,13 +49,23 @@ class Draft:
     placements: list  # (fact id, number text), in order of appearance
 
 
-def reason_of(f: Fact, ctx) -> str:
-    why = "; ".join(f.problems) or f"starea «{STATUS[f.status]}»"
+def reason_of(f: Fact, ctx, short: bool = False) -> str:
+    """Why the figure is a gap. Short: its name, its first problem and the evidence's claim, for the draft."""
+    problems = f.problems[:1] if short else f.problems
+    why = "; ".join(problems) or f"starea «{STATUS[f.status]}»"
     for item in ctx.decisions["evidence"]:
         v = ctx.verified.get(item["id"])
         if item.get("explains_gap") == f.id and v and v.ok:
-            why += f"; {v.source}: „{item['quote']}”"
-    return f"{f.description}: {why}"
+            if short:
+                claim = item["claim"].rstrip(".")
+                why += f"; {item.get('cited_as', v.source)} ({item.get('location', '')}): {claim[:1].lower()}{claim[1:]}"
+            else:
+                why += f"; {v.source}: „{item['quote']}”"
+    return f"{(f.name or f.description) if short else f.description}: {why}"
+
+
+def figure_gap(f: Fact, ctx) -> Slot:
+    return Slot(reason=reason_of(f, ctx), short=brief(reason_of(f, ctx, short=True)))
 
 
 class Context:
@@ -65,7 +88,7 @@ class Context:
             if f is None:
                 return Slot(reason=f"nicio dovadă pentru «{arg}» în config/decisions.toml")
             if not f.usable:
-                return Slot(reason=reason_of(f, self))
+                return figure_gap(f, self)
             t = fmt(f.value, f.kind)
             return Slot(t, placements=[(f.id, t)])
         if name == "clause":
@@ -79,7 +102,7 @@ class Context:
         if f is None:
             return Slot(reason=f"slotul «{name}» nu există în catalog")
         if not f.usable:
-            return Slot(reason=reason_of(f, self))
+            return figure_gap(f, self)
         t = fmt(f.value, f.kind)
         return Slot(t, placements=[(f.id, t)])
 
@@ -89,11 +112,14 @@ class Context:
         if not req.usable:
             return Slot(reason=f"«{rule['text']}» nu se poate afirma fără {req.id.upper()}")
         if not by.usable:
-            return Slot(reason=f"acoperirea nu se poate verifica: {reason_of(by, self)}")
+            return Slot(reason=f"acoperirea nu se poate verifica: {reason_of(by, self)}",
+                        short=f"acoperirea nu se poate verifica: {brief(reason_of(by, self, short=True))}")
         if by.value >= req.value:
             return Slot(rule["text"])
         return Slot(reason=f"{by.description} ({fmt_mil(by.value)}) nu acoperă singur {req.description} "
-                           f"({fmt_mil(req.value)}); partea eligibilă din nivelul 2 nu se poate stabili din registru")
+                           f"({fmt_mil(req.value)}); partea eligibilă din nivelul 2 nu se poate stabili din registru",
+                    short=f"{by.name or by.description} ({fmt_mil(by.value)}) nu acoperă singur "
+                          f"{req.name or req.description} ({fmt_mil(req.value)}); limita nivelului 2 nu e în registru")
 
     def render_text(self, text: str, whole_gap_on=()) -> Slot:
         out, pos, reasons, placements, whole = [], 0, [], [], []
@@ -102,11 +128,11 @@ class Context:
             s = self.slot(m.group(1), m.group(2))
             if s.text is None:
                 lead = ", " if m.group(1) == "clause" else ""
-                out.append(lead + gap(s.reason))
+                out.append(lead + gap(s.shown))
                 reasons.append(s.reason)
                 key = m.group(1) + (f".{m.group(2)}" if m.group(2) else "")
                 if key in whole_gap_on:
-                    whole.append(s.reason)
+                    whole.append(s.shown)
             else:
                 out.append(s.text)
                 placements += s.placements
@@ -115,8 +141,8 @@ class Context:
             pos = m.end()
         out.append(text[pos:])
         if whole:
-            r = "; ".join(reasons)
-            return Slot(gap(r), r, [])
+            # The draft names only what blanks the sentence; the issues list keeps every reason.
+            return Slot(gap("; ".join(whole)), "; ".join(reasons), [])
         return Slot("".join(out), "; ".join(reasons) or None, placements)
 
     def sentence(self, spec: dict) -> Slot:
@@ -129,14 +155,14 @@ class Context:
         if "variant" in spec:
             f = self.facts[spec["variant"]]
             if not f.usable:
-                r = reason_of(f, self)
-                return Slot(gap(r), r)
+                s = figure_gap(f, self)
+                return Slot(gap(s.shown), s.reason)
             return self.render_text(spec["zero"] if f.value == 0 else spec["positive"])
         for ev in spec.get("requires", []):
             v = self.verified.get(ev)
             if v is None or not v.ok:
                 r = f"{spec['topic']}; dovada «{ev}»: {v.detail if v else 'lipsește din config/decisions.toml'}"
-                return Slot(gap(r), r)
+                return Slot(gap(brief(r)), r)
         return self.render_text(spec["text"], spec.get("whole_gap_on", []))
 
 
@@ -229,7 +255,7 @@ def resolve_comparison(fid, spec, year, facts, prior_facts, published, decisions
             break
     if cause is None:
         why = why or "cauza variației nu are nicio dovadă aprobată în config/decisions.toml"
-        cause = gap(why)
+        cause = gap(brief(why))
     text = spec["text"].format(direction=spec[direction], prior=prior_text, prior_year=year - 1, cause=cause)
     return Slot(text, why, [(prior_fact.id, prior_text)]), prior_fact
 

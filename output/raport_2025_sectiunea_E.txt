@@ -17,6 +17,6 @@ E.2 Cerința de capital de solvabilitate și cerința de capital minim
 
 La 31 decembrie 2025, SCR a fost de 148,8 mil. lei, în scădere față de 151,9 mil. lei la sfârșitul anului 2024, în principal ca urmare a scăderii riscului de piață. Rata de solvabilitate a fost de 197,4 %.
 
-[de completat: Cerința de capital minim (MCR): celula Capital!C11 este goală; pe rând scrie «în lucru, actuariat» (Capital!E11); nota_functia_actuariala_2026-02-02.docx (paragraful 4): „Calculul cerinței de capital minim este în curs de finalizare și va fi transmis separat.”; «a fost acoperită integral» nu se poate afirma fără MCR]
+[de completat: MCR: celula Capital!C11 este goală; pe rând scrie «în lucru, actuariat» (Capital!E11); nota funcției actuariale din 02.02.2026 (paragraful 4): calculul MCR nu era finalizat la data notei]
 
 Societatea calculează SCR folosind formula standard și nu utilizează parametri specifici proprii.

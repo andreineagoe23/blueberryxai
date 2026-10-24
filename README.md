@@ -111,6 +111,8 @@ Where the brief or the materials left a choice open, the program does this.
   towards the MCR only up to a limit that the workbook does not give.
 - The legal-basis sentence in E.1 has no source in this year's documents. It is carried forward as fixed text
   approved in `config/decisions.toml`, and should be reconfirmed by compliance each year.
+- A gap in the draft gives a short, concrete reason (the figure, the cell, what is wrong). The full
+  reason, with file names and whole quotes, is in `probleme_E_2025.md`.
 - The draft is checked automatically: every amount in it comes from a figure, none of the refused claims
   appears, and it shares no six-word sequence with the Asigurări Dunărea report.
 

@@ -7,7 +7,7 @@ diferit-de-N-1:own_funds_total,valoarea diferă de anul anterior,own_funds_total
 ordin-de-marime:own_funds_total,ordinul de mărime față de anul anterior,own_funds_total,trecut,raport 1.0320
 diferit-de-N-1:scr,valoarea diferă de anul anterior,scr,trecut,148763200 față de 151900000
 ordin-de-marime:scr,ordinul de mărime față de anul anterior,scr,trecut,raport 0.9793
-diferit-de-N-1:solvency_ratio_reported,valoarea diferă de anul anterior,solvency_ratio_reported,eșuat,registru_2025.xlsx!Capital!C12 = 1.874 este identică cu valoarea din registru_2024.xlsx (registru_2024.xlsx!Capital!C11); probabil nu a fost actualizată
+diferit-de-N-1:solvency_ratio_reported,valoarea diferă de anul anterior,solvency_ratio_reported,eșuat,registru_2025.xlsx!Capital!C12 este identică cu valoarea din registru_2024.xlsx (registru_2024.xlsx!Capital!C11); probabil nu a fost actualizată
 ordin-de-marime:solvency_ratio_reported,ordinul de mărime față de anul anterior,solvency_ratio_reported,trecut,raport 1.0000
 diferit-de-N-1:scr_uw,valoarea diferă de anul anterior,scr_uw,trecut,104215000 față de 97600000
 ordin-de-marime:scr_uw,ordinul de mărime față de anul anterior,scr_uw,trecut,raport 1.0678

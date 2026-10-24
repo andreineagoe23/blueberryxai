@@ -29,6 +29,7 @@ class Fact:
     cell: str | None = None
     computed: Decimal | None = None  # derived figures: the calculation, kept even in conflict
     column: str = "current"
+    name: str = ""  # short name, for the reasons written in the draft
 
     def flag(self, status: str, problem: str):
         """Lower the status (never raise it) and record why."""
@@ -55,7 +56,7 @@ def _pick_sheets(spec: dict, wb: Workbook):
 
 def locate(fig: dict, wb: Workbook, sheet_specs: dict) -> Fact:
     column = fig.get("column", "current")
-    f = Fact(fig["id"], fig["description"], fig["kind"], "ok", column=column)
+    f = Fact(fig["id"], fig["description"], fig["kind"], "ok", column=column, name=fig.get("name", ""))
     aliases = set().union(*(label_keys(lbl) for lbl in fig["labels"]))
     sheets, how, fallback = _pick_sheets(sheet_specs[fig["sheet"]], wb)
     candidates = [(s, r) for s in sheets for r in s.rows if r.keys & aliases]
@@ -98,7 +99,7 @@ def locate(fig: dict, wb: Workbook, sheet_specs: dict) -> Fact:
 
     if f.kind == "money":
         if sh.factor is None:
-            f.flag("uncertain", f"{sh.name}: {sh.unit_problem}; valoarea {plain(v.number)} nu poate fi convertită în lei")
+            f.flag("uncertain", f"{sh.unit_problem} (foaia «{sh.name}»); valoarea din {coord} nu poate fi convertită în lei")
             return f
         f.value = v.number * sh.factor
         f.reason += f", unitate «{sh.unit_text}», {v.how} → {plain(f.value)} lei"

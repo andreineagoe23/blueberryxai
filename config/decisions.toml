@@ -100,8 +100,9 @@ document = "nota_functia_actuariala_2026-02-02.docx"
 location = "paragraful 4"
 quote = "Calculul cerinței de capital minim este în curs de finalizare și va fi transmis separat."
 reason = "Explică de ce registrul nu are MCR; se citează în motivul locului de completat."
-# Cited as the reason of the gap while the workbook has no MCR.
+# Cited as the reason of the gap while the workbook has no MCR, under the name `cited_as`.
 explains_gap = "mcr"
+cited_as = "nota funcției actuariale din 02.02.2026"
 approved_by = "Andrei Neagoe"
 
 [[evidence]]

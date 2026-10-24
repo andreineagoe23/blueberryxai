@@ -47,18 +47,18 @@
     }
   },
   "config": {
-    "catalogue.toml": "726865dbe6f28dc748e046aeefd6e3d534f33c0c53de07b29d6afa3596d88e55",
-    "decisions.toml": "0ff8ebc73b59076361d41497268c79c94695266edfc31e9b3984884b251df3c0",
+    "catalogue.toml": "1dc46c74bbf10a83674b2980bcde48f1e43d39ee2a5119d998bc36b037b48248",
+    "decisions.toml": "3e06236ea5ef96e05a0d5d5ebe4dfb6f2f6ad132df62b513d309daf5c0b40b07",
     "run.toml": "7017ed04b81d45ec667655387d0d20b87f9a3e64439914c7090ba53385e34bd9",
     "template_E.toml": "bf664286a8f934244a251f2e967395f35b2d8677d2854029499ab12c55dde5bf"
   },
   "outputs": {
     "backtest_2024.md": "50422fbde887e525569755dea2ccfcbfed5839e70038468993787e8ff677aad4",
-    "cifre_E_2025.csv": "fa21d42d598be99c008722dea3ec0f879bab9d4b825158f3907374b05d730158",
+    "cifre_E_2025.csv": "608571ee0cd7fd3e542934bbff0b5a80680c346d82b9fc57b90059492aa37385",
     "mapping_2025.toml": "81afeb2c2b2e0b60296cdff0aadd8cbfbf2f05202c93ec27d4430df3e9622e3c",
-    "probleme_E_2025.md": "193a09b384ea38e022cff76b9df45f12c6f1a03d87f019a56046b005bab815e8",
-    "raport_2025_sectiunea_E.txt": "b5a5e497e1b6c5f44a3fbb0b9bc5cbf4c24bf38c628986ff4051a3496ae4833d",
-    "verificari_E_2025.csv": "9f9d569f3ec25c206f189e671f1c1c73ea55866e50a91bc0fe08be91b0481eab"
+    "probleme_E_2025.md": "d739c3546c7c207a3abcb195ed07493218fd7c4693ad62b2ea83fa59f5749cf1",
+    "raport_2025_sectiunea_E.txt": "f8c638e9f44fef150f278c7a0596edb281a0059ea87f7a68c2fd073c7c1d9f30",
+    "verificari_E_2025.csv": "99a9f2e56bc278409e2b2677306928dc33aa985931acf9363bfe799c6c5fdb1b"
   },
   "python": "3.14.6",
   "libraries": {

@@ -34,7 +34,7 @@ Testele: `.venv/bin/python -m pytest tests` (din rădăcină).
 | Config: `run.toml`, `catalogue.toml`, `template_E.toml`, `decisions.toml` | gata |
 | Cod: `src/main.py`, `src/sfcr/` (workbook, locate, money, checks, decisions, evidence, compose, pipeline, backtest, outputs) | gata |
 | `output/`: 7 fișiere, generate de program | gata; două rulări dau fișiere identice octet cu octet |
-| Teste: 47 (34 pe copii stricate ale registrului 2025, 8 pe decizii și dovezi, 5 pe format) | toate trec, pe Python 3.11 și 3.14 |
+| Teste: 48 (35 pe copii stricate ale registrului 2025, 8 pe decizii și dovezi, 5 pe format) | toate trec, pe Python 3.11 și 3.14 |
 | Rulare pe 21 de mutații agresive (foaie ștearsă, antete inversate, formulă circulară, SCR = 0, documente lipsă) | nicio cădere; cod de eroare doar dacă lipsește `registru_2025.xlsx` |
 | `README.md` nou (instalare, comanda, presupuneri) | gata; enunțul temei e în `notes/ASSESSMENT.md` |
 | `ai/AI.md` + exportul conversațiilor | **de făcut** |
@@ -89,6 +89,14 @@ reproduce 10 sloturi din E (al 11-lea, nivelul 3, e o diferență așteptată) �
     „down”/„up”; variația sub prag se scrie cu virgulă („-0,26 %”), împreună cu pragul.
 15. **(24.10) Teste noi:** SCR în creștere (cauza „scădere” cade), variație sub prag, unități în milioane,
     antete cu anul, etichete în coloana A, MCR ca text, diversificare introdusă negativ.
+
+16. **(24.10) Gap-uri scurte în draft (regula 3).** În draft, motivul are forma: numele scurt al figurii
+    (`name` nou în catalog), prima ei problemă și `claim`-ul dovezii (cu `cited_as`, de exemplu „nota funcției
+    actuariale din 02.02.2026”), fără numele registrului și fără citatele lungi. MCR: de la ~330 la ~200 de
+    caractere. Motivul complet, cu fișiere și citate întregi, rămâne în `probleme_E_2025.md`. O propoziție
+    întreagă care devine gap numește doar ce a golit-o. Mesajele de magnitudine și de „identic cu N-1” nu mai
+    repetă valoarea suspectă, pentru că ajung în draft (două teste existente au prins asta). Test nou:
+    `test_gaps_in_the_draft_are_short`.
 
 ## Bug-uri găsite și reparate
 
