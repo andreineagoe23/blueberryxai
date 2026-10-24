@@ -1,0 +1,37 @@
+verificare,descriere,figuri,rezultat,detaliu
+diferit-de-N-1:own_funds_t1,valoarea diferă de anul anterior,own_funds_t1,trecut,262449600 față de 251300000
+ordin-de-marime:own_funds_t1,ordinul de mărime față de anul anterior,own_funds_t1,trecut,raport 1.0444
+diferit-de-N-1:own_funds_t2,valoarea diferă de anul anterior,own_funds_t2,trecut,31249700 față de 33300000
+ordin-de-marime:own_funds_t2,ordinul de mărime față de anul anterior,own_funds_t2,trecut,raport 0.9384
+diferit-de-N-1:own_funds_total,valoarea diferă de anul anterior,own_funds_total,trecut,293699300 față de 284600000
+ordin-de-marime:own_funds_total,ordinul de mărime față de anul anterior,own_funds_total,trecut,raport 1.0320
+diferit-de-N-1:scr,valoarea diferă de anul anterior,scr,trecut,148763200 față de 151900000
+ordin-de-marime:scr,ordinul de mărime față de anul anterior,scr,trecut,raport 0.9793
+diferit-de-N-1:solvency_ratio_reported,valoarea diferă de anul anterior,solvency_ratio_reported,eșuat,registru_2025.xlsx!Capital!C12 = 1.874 este identică cu valoarea din registru_2024.xlsx (registru_2024.xlsx!Capital!C11); probabil nu a fost actualizată
+ordin-de-marime:solvency_ratio_reported,ordinul de mărime față de anul anterior,solvency_ratio_reported,trecut,raport 1.0000
+diferit-de-N-1:scr_uw,valoarea diferă de anul anterior,scr_uw,trecut,104215000 față de 97600000
+ordin-de-marime:scr_uw,ordinul de mărime față de anul anterior,scr_uw,trecut,raport 1.0678
+diferit-de-N-1:scr_mkt,valoarea diferă de anul anterior,scr_mkt,trecut,41902600 față de 58300000
+ordin-de-marime:scr_mkt,ordinul de mărime față de anul anterior,scr_mkt,trecut,raport 0.7187
+diferit-de-N-1:scr_cpty,valoarea diferă de anul anterior,scr_cpty,trecut,11807300 față de 12100000
+ordin-de-marime:scr_cpty,ordinul de mărime față de anul anterior,scr_cpty,trecut,raport 0.9758
+diferit-de-N-1:scr_div,valoarea diferă de anul anterior,scr_div,trecut,22431900 față de -28500000
+ordin-de-marime:scr_div,ordinul de mărime față de anul anterior,scr_div,trecut,raport -0.7871
+diferit-de-N-1:bscr,valoarea diferă de anul anterior,bscr,trecut,135493000 față de 139500000
+ordin-de-marime:bscr,ordinul de mărime față de anul anterior,bscr,trecut,raport 0.9713
+diferit-de-N-1:scr_op,valoarea diferă de anul anterior,scr_op,trecut,13270200 față de 12400000
+ordin-de-marime:scr_op,ordinul de mărime față de anul anterior,scr_op,trecut,raport 1.0702
+diferit-de-N-1:scr_modules,valoarea diferă de anul anterior,scr_modules,trecut,148763200 față de 151900000
+ordin-de-marime:scr_modules,ordinul de mărime față de anul anterior,scr_modules,trecut,raport 0.9793
+fonduri-proprii-niveluri,nivel 1 + nivel 2 + nivel 3 = total fonduri proprii eligibile,own_funds_t1 own_funds_t2 own_funds_t3 own_funds_total,trecut,"own_funds_t1 = 262449600 (262,4 mil. lei), own_funds_t2 = 31249700 (31,2 mil. lei), own_funds_t3 = 0 (0,0 mil. lei), own_funds_total = 293699300 (293,7 mil. lei)"
+scr-doua-foi,SCR din foaia Capital = SCR din foaia SCR_module,scr scr_modules,trecut,"scr = 148763200 (148,8 mil. lei), scr_modules = 148763200 (148,8 mil. lei)"
+scr-baza-din-module,subscriere + piață + contrapartidă − diversificare = SCR de bază,scr_uw scr_mkt scr_cpty scr_div bscr,trecut,"scr_uw = 104215000 (104,2 mil. lei), scr_mkt = 41902600 (41,9 mil. lei), scr_cpty = 11807300 (11,8 mil. lei), scr_div = 22431900 (22,4 mil. lei), bscr = 135493000 (135,5 mil. lei)"
+scr-din-baza,SCR de bază + risc operațional = SCR (foaia SCR_module),bscr scr_op scr_modules,trecut,"bscr = 135493000 (135,5 mil. lei), scr_op = 13270200 (13,3 mil. lei), scr_modules = 148763200 (148,8 mil. lei)"
+mcr-coridor,MCR între 25 % și 45 % din SCR (coridorul Solvabilitate II),mcr scr,nu s-a putut rula,"mcr: celula Capital!C11 este goală; pe rând scrie «în lucru, actuariat» (Capital!E11)"
+calcul:solvency_ratio,valoarea raportată = calculul,own_funds_total scr solvency_ratio_reported,eșuat,"raportat 187,4 % (registru_2025.xlsx!Capital!C12), calculat 197,4 % (registru_2025.xlsx!Capital!C8 / registru_2025.xlsx!Capital!C10)"
+an-anterior:scr,"valoarea din anul anterior, din cel puțin două surse",scr,trecut,"registru_2024.xlsx!Capital!C9 = 151900000; registru_2025.xlsx!Capital!D10 = 151900000; raport_2024.txt: «151,9 mil. lei»"
+text:fiecare-suma-are-sursa,fiecare sumă și procent din text vine dintr-o figură,,trecut,"7 în text, 7 cu sursă"
+text:fara-prior-year-figure-for-missing,"textul nu conține afirmația respinsă «Unde lipsește o cifră, se pune cea de anul trecut.»",,trecut,niciun termen interzis
+text:fara-reinsurance-improved-ratio,textul nu conține afirmația respinsă «Rata de solvabilitate s-a îmbunătățit datorită noului program de reasigurare.»,,trecut,niciun termen interzis
+text:fara-wording-from-other-insurer,textul nu conține afirmația respinsă «Se preiau formulări din raportul Asigurări Dunărea.»,,trecut,niciun termen interzis
+text:formulari-straine:raport_Asigurari_Dunarea_2024_extras.txt,fără formulări din textul altei companii,,trecut,0 secvențe comune de 6 cuvinte

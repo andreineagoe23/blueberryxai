@@ -1,0 +1,246 @@
+# Legătura dintre cifrele din raportul 2024 și registrul de calcul. Scris pentru raportul 2024.
+# Valorile din registru sunt în lei.
+# text: cifra așa cum apare în raport; occurrence: a câta apariție a acelui text în raport (1 = prima).
+# format: mil_lei_1 = milioane lei cu o zecimală; mil_lei_1_abs = la fel, fără semn; pct_1 = procent cu o
+# zecimală; count = număr întreg. Cifrele de tip share se calculează: valoarea liniei împărțită la total.
+
+[[figure]]
+text = "412,4"
+occurrence = 1
+sheet = "Prime"
+cell = "C10"
+format = "mil_lei_1"
+
+[[figure]]
+text = "168,2"
+occurrence = 1
+sheet = "Prime"
+cell = "C5"
+format = "mil_lei_1"
+
+[[figure]]
+text = "40,8"
+occurrence = 1
+derived = "share"
+sheet = "Prime"
+cell = "C5"
+total_cell = "C10"
+format = "pct_1"
+
+[[figure]]
+text = "121,9"
+occurrence = 1
+sheet = "Prime"
+cell = "C6"
+format = "mil_lei_1"
+
+[[figure]]
+text = "29,6"
+occurrence = 1
+derived = "share"
+sheet = "Prime"
+cell = "C6"
+total_cell = "C10"
+format = "pct_1"
+
+[[figure]]
+text = "74,3"
+occurrence = 1
+sheet = "Prime"
+cell = "C7"
+format = "mil_lei_1"
+
+[[figure]]
+text = "18,0"
+occurrence = 1
+derived = "share"
+sheet = "Prime"
+cell = "C7"
+total_cell = "C10"
+format = "pct_1"
+
+[[figure]]
+text = "29,4"
+occurrence = 1
+sheet = "Prime"
+cell = "C8"
+format = "mil_lei_1"
+
+[[figure]]
+text = "7,1"
+occurrence = 1
+derived = "share"
+sheet = "Prime"
+cell = "C8"
+total_cell = "C10"
+format = "pct_1"
+
+[[figure]]
+text = "18,5"
+occurrence = 1
+sheet = "Prime"
+cell = "C9"
+format = "mil_lei_1"
+
+[[figure]]
+text = "4,5"
+occurrence = 1
+derived = "share"
+sheet = "Prime"
+cell = "C9"
+total_cell = "C10"
+format = "pct_1"
+
+[[figure]]
+text = "198,7"
+occurrence = 1
+sheet = "Daune"
+cell = "C5"
+format = "mil_lei_1"
+
+[[figure]]
+text = "18.420"
+occurrence = 1
+sheet = "Daune"
+cell = "C6"
+format = "count"
+
+[[figure]]
+text = "352,8"
+occurrence = 1
+sheet = "Investitii"
+cell = "C5"
+format = "mil_lei_1"
+
+[[figure]]
+text = "12,6"
+occurrence = 1
+sheet = "Investitii"
+cell = "C7"
+format = "mil_lei_1"
+
+[[figure]]
+text = "78,4"
+occurrence = 1
+sheet = "Investitii"
+cell = "C7"
+format = "pct_1"
+
+[[figure]]
+text = "6,2"
+occurrence = 1
+sheet = "Investitii"
+cell = "C8"
+format = "pct_1"
+
+[[figure]]
+text = "97,6"
+occurrence = 1
+sheet = "SCR_module"
+cell = "C5"
+format = "mil_lei_1"
+
+[[figure]]
+text = "58,3"
+occurrence = 1
+sheet = "SCR_module"
+cell = "C6"
+format = "mil_lei_1"
+
+[[figure]]
+text = "12,1"
+occurrence = 1
+sheet = "SCR_module"
+cell = "C7"
+format = "mil_lei_1"
+
+[[figure]]
+text = "12,4"
+occurrence = 1
+sheet = "SCR_module"
+cell = "C10"
+format = "mil_lei_1"
+
+[[figure]]
+text = "28,5"
+occurrence = 1
+sheet = "SCR_module"
+cell = "C8"
+format = "mil_lei_1_abs"
+
+[[figure]]
+text = "192,1"
+occurrence = 1
+sheet = "Provizioane"
+cell = "C7"
+format = "mil_lei_1"
+
+[[figure]]
+text = "182,3"
+occurrence = 1
+sheet = "Provizioane"
+cell = "C5"
+format = "mil_lei_1"
+
+[[figure]]
+text = "9,8"
+occurrence = 1
+sheet = "Provizioane"
+cell = "C6"
+format = "mil_lei_1"
+
+[[figure]]
+text = "284,6"
+occurrence = 1
+sheet = "Capital"
+cell = "C7"
+format = "mil_lei_1"
+
+[[figure]]
+text = "251,3"
+occurrence = 1
+sheet = "Capital"
+cell = "C5"
+format = "mil_lei_1"
+
+[[figure]]
+text = "33,3"
+occurrence = 1
+sheet = "Capital"
+cell = "C6"
+format = "mil_lei_1"
+
+[[figure]]
+text = "151,9"
+occurrence = 1
+sheet = "Capital"
+cell = "C9"
+format = "mil_lei_1"
+
+[[figure]]
+text = "140,2"
+occurrence = 1
+sheet = "Capital"
+cell = "D9"
+format = "mil_lei_1"
+
+[[figure]]
+text = "412,4"
+occurrence = 2
+sheet = "Prime"
+cell = "C10"
+format = "mil_lei_1"
+
+[[figure]]
+text = "187,4"
+occurrence = 1
+sheet = "Capital"
+cell = "C11"
+format = "pct_1"
+
+[[figure]]
+text = "45,6"
+occurrence = 1
+sheet = "Capital"
+cell = "C10"
+format = "mil_lei_1"

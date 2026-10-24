@@ -1,0 +1,48 @@
+# Run settings for the section E roll-forward.
+# Everything that changes from one year to the next is here or in the other config files,
+# never in the code. File names are templates: {year} is the reporting year, {prior} the year before.
+
+reporting_year = 2025
+company = "ASIGURĂRI CARPAȚI S.A."
+
+[inputs]
+# Read from the folder the program is run in (date/).
+workbook = "registru_{year}.xlsx"
+prior_workbook = "registru_{prior}.xlsx"
+prior_report = "raport_{prior}.txt"
+prior_mapping = "mapping_{prior}.toml"
+# Texts of other companies: the draft must not share wording with them (report rule 4).
+other_company_texts = ["raport_Asigurari_Dunarea_{prior}_extras.txt"]
+
+[sheets]
+# A visible sheet whose title (first text cell) contains one of these is ignored and reported.
+# Compared after normalisation, so diacritics and case do not matter.
+ignore_if_title_contains = ["nu se folosește", "copie"]
+
+[columns]
+# Column headers, matched after normalisation (lowercase, no diacritics, punctuation as spaces).
+current = ["31.12 an curent", "31.12.{year}", "31 decembrie {year}", "{year}"]
+prior = ["31.12 an anterior", "31.12.{prior}", "31 decembrie {prior}", "{prior}"]
+
+[units]
+# Unit as written after "în" in the sheet header ("Valori în mii lei"), and its factor to lei.
+# A sheet with no recognised unit gives no money figures: they become gaps.
+"lei" = "1"
+"ron" = "1"
+"mii lei" = "1000"
+"mii ron" = "1000"
+"milioane lei" = "1000000"
+"mil lei" = "1000000"
+"milioane ron" = "1000000"
+
+[tolerances]
+# Amounts in lei, ratios as fractions.
+money_lei = "1"            # sums and cross-sheet equalities
+ratio = "0.0005"           # reported vs computed solvency ratio (0,05 percentage points)
+magnitude_min = "0.5"      # current / prior-year value outside [min, max] = probable unit error
+magnitude_max = "2"
+direction_min_relative = "0.005"  # a change below 0,5 % is not called a rise or a fall by the program
+
+[similarity]
+# Shared word sequences of this length with another company's text are reported.
+ngram_words = 6

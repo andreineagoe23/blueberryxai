@@ -1,0 +1,22 @@
+ASIGURĂRI CARPAȚI S.A.
+Raportul privind solvabilitatea și situația financiară
+pentru exercițiul financiar 2025
+(proiect: secțiunea E)
+
+E. GESTIONAREA CAPITALULUI
+
+E.1 Fonduri proprii
+
+La 31 decembrie 2025, fondurile proprii eligibile pentru acoperirea cerinței de capital de solvabilitate (SCR) au fost de 293,7 mil. lei, din care fonduri proprii de nivel 1 de 262,4 mil. lei și fonduri proprii de nivel 2 de 31,2 mil. lei. Societatea nu a deținut fonduri proprii de nivel 3.
+
+Fondurile proprii sunt clasificate conform Regulamentului delegat (UE) 2015/35 și Legii nr. 237/2015 privind autorizarea și supravegherea activității de asigurare și reasigurare, aplicabile Societății începând cu 1 ianuarie 2016.
+
+În cursul anului 2025, Societatea a plătit dividende de 15,0 mil. lei, conform politicii de dividende aprobate de Consiliul de Administrație.
+
+E.2 Cerința de capital de solvabilitate și cerința de capital minim
+
+La 31 decembrie 2025, SCR a fost de 148,8 mil. lei, în scădere față de 151,9 mil. lei la sfârșitul anului 2024, în principal ca urmare a scăderii riscului de piață. Rata de solvabilitate a fost de 197,4 %.
+
+[de completat: Cerința de capital minim (MCR): celula Capital!C11 este goală; pe rând scrie «în lucru, actuariat» (Capital!E11); nota_functia_actuariala_2026-02-02.docx (paragraful 4): „Calculul cerinței de capital minim este în curs de finalizare și va fi transmis separat.”; «a fost acoperită integral» nu se poate afirma fără MCR]
+
+Societatea calculează SCR folosind formula standard și nu utilizează parametri specifici proprii.

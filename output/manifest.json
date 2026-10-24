@@ -1,0 +1,69 @@
+{
+  "reporting_year": 2025,
+  "inputs": {
+    "email_director_financiar.txt": {
+      "sha256": "7762a376ab73e34722b2c55ac5b1394b1a4c59ffdf44e7c2d5f000ec030a3aca",
+      "read_by_program": false
+    },
+    "mapping_2024.toml": {
+      "sha256": "c82cb8a48c40ef4b652724c3326f04058e69ea5f059d6182c8018554cee87a53",
+      "read_by_program": true
+    },
+    "nota_functia_actuariala_2026-02-02.docx": {
+      "sha256": "6a64488d1d5af60869574e3d2feaef6538506c68952ff37403975b18ffb39ee0",
+      "read_by_program": true
+    },
+    "proces_verbal_AGA_2025-04-24.txt": {
+      "sha256": "0adba254d8aa89297b99e203f01185335a65102582ecb0156dcb2e2397212f3c",
+      "read_by_program": true
+    },
+    "proces_verbal_CA_2025-02-18_scanat.pdf": {
+      "sha256": "6c15f38a3e3df670c8c3a95b5400a114d0167f137344a581ca1d134d2d986ba7",
+      "read_by_program": false
+    },
+    "raport_2024.txt": {
+      "sha256": "c80a734f27bc029736b7f0aed96a3e996104be5959bf16c3dc432d54fce65c51",
+      "read_by_program": true
+    },
+    "raport_2024_sinteza.txt": {
+      "sha256": "8a01191cdb734643bf9ed4a548de70f22f70f4e90dc746efaf8241f829362afe",
+      "read_by_program": false
+    },
+    "raport_Asigurari_Dunarea_2024_extras.txt": {
+      "sha256": "411930147c3b2ec8d9dcf97663ede529bf357081525e38fbf5646f0378ae74d2",
+      "read_by_program": true
+    },
+    "registru_2024.xlsx": {
+      "sha256": "7d522ac3864f4fb42412645c933f185cd0a77f58dcfb8a67f85c44c6ce618af4",
+      "read_by_program": true
+    },
+    "registru_2025.xlsx": {
+      "sha256": "e036f04e49b118e2da870112f5bde9e197f8cb3867d52f205cda617840318dc3",
+      "read_by_program": true
+    },
+    "situatii_financiare_2025_extras.pdf": {
+      "sha256": "da54da1ca135a6a53b294ee913570f4cdf752c139989810f7cda91bdea06e619",
+      "read_by_program": true
+    }
+  },
+  "config": {
+    "catalogue.toml": "726865dbe6f28dc748e046aeefd6e3d534f33c0c53de07b29d6afa3596d88e55",
+    "decisions.toml": "0ff8ebc73b59076361d41497268c79c94695266edfc31e9b3984884b251df3c0",
+    "run.toml": "7017ed04b81d45ec667655387d0d20b87f9a3e64439914c7090ba53385e34bd9",
+    "template_E.toml": "bf664286a8f934244a251f2e967395f35b2d8677d2854029499ab12c55dde5bf"
+  },
+  "outputs": {
+    "backtest_2024.md": "50422fbde887e525569755dea2ccfcbfed5839e70038468993787e8ff677aad4",
+    "cifre_E_2025.csv": "fa21d42d598be99c008722dea3ec0f879bab9d4b825158f3907374b05d730158",
+    "mapping_2025.toml": "81afeb2c2b2e0b60296cdff0aadd8cbfbf2f05202c93ec27d4430df3e9622e3c",
+    "probleme_E_2025.md": "193a09b384ea38e022cff76b9df45f12c6f1a03d87f019a56046b005bab815e8",
+    "raport_2025_sectiunea_E.txt": "b5a5e497e1b6c5f44a3fbb0b9bc5cbf4c24bf38c628986ff4051a3496ae4833d",
+    "verificari_E_2025.csv": "9f9d569f3ec25c206f189e671f1c1c73ea55866e50a91bc0fe08be91b0481eab"
+  },
+  "python": "3.14.6",
+  "libraries": {
+    "openpyxl": "3.1.5",
+    "pypdf": "6.21.2",
+    "python-docx": "1.2.0"
+  }
+}

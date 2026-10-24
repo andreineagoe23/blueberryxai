@@ -1,0 +1,169 @@
+# Mapping generat de program pentru raportul 2025, secțiunea E. Nu se editează de mână.
+# id: figura din config/catalogue.toml; text și occurrence: cum apare în raport (număr întreg, nu subșir);
+# unit: unitatea foii, citită din registru; status: ok / decis / conflict / lipsă / nesigur.
+
+[[figure]]
+id = "own_funds_total"
+text = "293,7"
+occurrence = 1
+workbook = "registru_2025.xlsx"
+sheet = "Capital"
+cell = "C8"
+unit = "Valori în mii lei (Capital!A2)"
+format = "mil_lei_1"
+value = "293699300"
+status = "ok"
+source = "registru_2025.xlsx!Capital!C8"
+reason = "eticheta «Fonduri proprii eligibile SCR, total» (rândul 8), foaia vizibilă «Capital» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (Capital!A2)», formulă =C5+C6+C7 = 293699.3, egală cu valoarea salvată → 293699300 lei"
+
+[[figure]]
+id = "own_funds_t1"
+text = "262,4"
+occurrence = 1
+workbook = "registru_2025.xlsx"
+sheet = "Capital"
+cell = "C5"
+unit = "Valori în mii lei (Capital!A2)"
+format = "mil_lei_1"
+value = "262449600"
+status = "ok"
+source = "registru_2025.xlsx!Capital!C5"
+reason = "eticheta «Fonduri proprii eligibile SCR, nivel 1» (rândul 5), foaia vizibilă «Capital» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (Capital!A2)», valoare introdusă 262449.6 → 262449600 lei"
+
+[[figure]]
+id = "own_funds_t2"
+text = "31,2"
+occurrence = 1
+workbook = "registru_2025.xlsx"
+sheet = "Capital"
+cell = "C6"
+unit = "Valori în mii lei (Capital!A2)"
+format = "mil_lei_1"
+value = "31249700"
+status = "ok"
+source = "registru_2025.xlsx!Capital!C6"
+reason = "eticheta «Fonduri proprii eligibile SCR, nivel 2» (rândul 6), foaia vizibilă «Capital» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (Capital!A2)», valoare introdusă 31249.7 → 31249700 lei"
+
+[[figure]]
+id = "dividends"
+text = "15,0"
+occurrence = 1
+format = "mil_lei_1"
+value = "15000000"
+status = "ok"
+source = "situatii_financiare_2025_extras.pdf, p. 1 (Indicatori selectați); confirmat de proces_verbal_AGA_2025-04-24.txt (punctul 3)"
+reason = "dovada «dividends-paid-2025», găsit cuvânt cu cuvânt: situatii_financiare_2025_extras.pdf, p. 1 (Indicatori selectați); confirmat de proces_verbal_AGA_2025-04-24.txt (punctul 3)"
+
+[[figure]]
+id = "scr"
+text = "148,8"
+occurrence = 1
+workbook = "registru_2025.xlsx"
+sheet = "Capital"
+cell = "C10"
+unit = "Valori în mii lei (Capital!A2)"
+format = "mil_lei_1"
+value = "148763200"
+status = "ok"
+source = "registru_2025.xlsx!Capital!C10"
+reason = "eticheta «SCR» (rândul 10), foaia vizibilă «Capital» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (Capital!A2)», valoare introdusă 148763.2 → 148763200 lei"
+
+[[figure]]
+id = "scr_prior_year"
+text = "151,9"
+occurrence = 1
+format = "mil_lei_1"
+value = "151900000"
+status = "ok"
+source = "registru_2024.xlsx!Capital!C9 = 151900000; registru_2025.xlsx!Capital!D10 = 151900000; raport_2024.txt: «151,9 mil. lei»"
+reason = "aceeași valoare în toate sursele: registru_2024.xlsx!Capital!C9 = 151900000; registru_2025.xlsx!Capital!D10 = 151900000; raport_2024.txt: «151,9 mil. lei»"
+
+[[figure]]
+id = "solvency_ratio"
+text = "197,4"
+occurrence = 1
+format = "pct_1"
+value = "1.974273879561612011572754552"
+status = "decis"
+source = "registru_2025.xlsx!Capital!C8 / registru_2025.xlsx!Capital!C10 (decizia «solvency-ratio-2025», Andrei Neagoe (propunere), de confirmat de directorul financiar, 2026-10-23)"
+reason = "calculat: own_funds_total / scr, rotunjit o singură dată la scriere"
+
+[[figure]]
+id = "own_funds_t3"
+# nu apare în text
+sheet = "Capital"
+cell = "C7"
+status = "ok"
+reason = "eticheta «Fonduri proprii eligibile SCR, nivel 3» (rândul 7), foaia vizibilă «Capital» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (Capital!A2)», valoare introdusă 0 → 0 lei"
+
+[[figure]]
+id = "mcr"
+# nu apare în text
+sheet = "Capital"
+cell = "C11"
+status = "lipsă"
+reason = "eticheta «MCR» (rândul 11), foaia vizibilă «Capital» (găsită după numele foii), coloana C («31.12 an curent»)"
+
+[[figure]]
+id = "solvency_ratio_reported"
+# nu apare în text
+sheet = "Capital"
+cell = "C12"
+status = "conflict"
+reason = "eticheta «Rata de solvabilitate» (rândul 12), foaia vizibilă «Capital» (găsită după numele foii), coloana C («31.12 an curent»), valoare introdusă 1.874, format procent → 1.874"
+
+[[figure]]
+id = "scr_uw"
+# nu apare în text
+sheet = "SCR_module"
+cell = "C5"
+status = "ok"
+reason = "eticheta «Risc de subscriere asigurare generală» (rândul 5), foaia vizibilă «SCR_module» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (SCR_module!A2)», valoare introdusă 104215 → 104215000 lei"
+
+[[figure]]
+id = "scr_mkt"
+# nu apare în text
+sheet = "SCR_module"
+cell = "C6"
+status = "ok"
+reason = "eticheta «Risc de piață» (rândul 6), foaia vizibilă «SCR_module» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (SCR_module!A2)», valoare introdusă 41902.6 → 41902600 lei"
+
+[[figure]]
+id = "scr_cpty"
+# nu apare în text
+sheet = "SCR_module"
+cell = "C7"
+status = "ok"
+reason = "eticheta «Risc de contrapartidă» (rândul 7), foaia vizibilă «SCR_module» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (SCR_module!A2)», valoare introdusă 11807.3 → 11807300 lei"
+
+[[figure]]
+id = "scr_div"
+# nu apare în text
+sheet = "SCR_module"
+cell = "C8"
+status = "ok"
+reason = "eticheta «Efect de diversificare (se scade)» (rândul 8), foaia vizibilă «SCR_module» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (SCR_module!A2)», valoare introdusă 22431.9 → 22431900 lei"
+
+[[figure]]
+id = "bscr"
+# nu apare în text
+sheet = "SCR_module"
+cell = "C9"
+status = "ok"
+reason = "eticheta «SCR de bază» (rândul 9), foaia vizibilă «SCR_module» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (SCR_module!A2)», valoare introdusă 135493 → 135493000 lei"
+
+[[figure]]
+id = "scr_op"
+# nu apare în text
+sheet = "SCR_module"
+cell = "C10"
+status = "ok"
+reason = "eticheta «Risc operațional» (rândul 10), foaia vizibilă «SCR_module» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (SCR_module!A2)», valoare introdusă 13270.2 → 13270200 lei"
+
+[[figure]]
+id = "scr_modules"
+# nu apare în text
+sheet = "SCR_module"
+cell = "C11"
+status = "ok"
+reason = "eticheta «SCR» (rândul 11), foaia vizibilă «SCR_module» (găsită după numele foii), coloana C («31.12 an curent»), unitate «Valori în mii lei (SCR_module!A2)», valoare introdusă 148763.2 → 148763200 lei"

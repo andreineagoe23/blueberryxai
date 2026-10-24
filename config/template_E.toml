@@ -1,0 +1,73 @@
+# Section E as a template: last year's sentences, with every figure, direction and cause as a slot.
+# The same sentences, filled with last year's year, are matched against last year's report to
+# back-test the catalogue (output/backtest_{prior}.md).
+#
+# Slots:
+#   {year} {prior_year}         the reporting year and the year before
+#   {<figure>}                  a catalogue figure, formatted (mil. lei / %); a gap if not ok
+#   {evidence.<figure>}         an amount from an evidence item in decisions.toml with that `figure`
+#   {clause.<evidence id>}      the text in [clauses], only if that evidence item is verified
+#   {comparison.<figure>}       direction against last year, prior value and cause (see [comparison])
+#   {coverage.<figure>}         the coverage sentence part (see [coverage])
+# Sentence options:
+#   variant = figure, with `zero` / `positive` texts
+#   requires = evidence ids that must all be verified, otherwise the sentence is a gap
+#   fixed = id of a [[fixed_text]] in decisions.toml
+#   whole_gap_on = slots that turn the whole sentence into one gap, named by `topic`
+
+header = ["{company}", "Raportul privind solvabilitatea și situația financiară", "pentru exercițiul financiar {year}", "(proiect: secțiunea E)"]
+
+[[block]]
+heading = "E. GESTIONAREA CAPITALULUI"
+
+[[block]]
+heading = "E.1 Fonduri proprii"
+
+[[block]]
+sentences = [
+  { text = "La 31 decembrie {year}, fondurile proprii eligibile pentru acoperirea cerinței de capital de solvabilitate (SCR) au fost de {own_funds_total}, din care fonduri proprii de nivel 1 de {own_funds_t1} și fonduri proprii de nivel 2 de {own_funds_t2}." },
+  { variant = "own_funds_t3", zero = "Societatea nu a deținut fonduri proprii de nivel 3.", positive = "Societatea a deținut fonduri proprii de nivel 3 de {own_funds_t3}." },
+]
+
+[[block]]
+sentences = [ { fixed = "own-funds-legal-basis" } ]
+
+[[block]]
+sentences = [
+  { text = "În cursul anului {year}, Societatea a plătit dividende de {evidence.dividends}{clause.dividend-policy}." },
+]
+
+[[block]]
+heading = "E.2 Cerința de capital de solvabilitate și cerința de capital minim"
+
+[[block]]
+sentences = [
+  { text = "La 31 decembrie {year}, SCR a fost de {scr}, {comparison.scr}.", whole_gap_on = ["scr"], topic = "SCR și variația lui" },
+  { text = "Rata de solvabilitate a fost de {solvency_ratio}." },
+]
+
+[[block]]
+sentences = [
+  { text = "Cerința de capital minim (MCR) a fost de {mcr} și {coverage.mcr}.", whole_gap_on = ["mcr"], topic = "cerința de capital minim (MCR) și acoperirea ei" },
+]
+
+[[block]]
+sentences = [
+  { text = "Societatea calculează SCR folosind formula standard și nu utilizează parametri specifici proprii.", requires = ["standard-formula"], topic = "metoda de calcul a SCR" },
+]
+
+[clauses]
+dividend-policy = ", conform politicii de dividende aprobate de Consiliul de Administrație"
+
+[comparison.scr]
+text = "{direction} față de {prior} la sfârșitul anului {prior_year}, {cause}"
+up = "în creștere"
+down = "în scădere"
+# Sources for last year's value; at least two must be present and all present must agree.
+prior_column_figure = "scr_prior_col"
+
+[coverage.mcr]
+# User decision (2026-10-23): "acoperită integral" only if tier 1 own funds alone cover the MCR.
+# Tier 2 counts towards the MCR only up to a limit the workbook does not give, so it is not used.
+covered_by = "own_funds_t1"
+text = "a fost acoperită integral"

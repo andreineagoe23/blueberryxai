@@ -1,0 +1,191 @@
+# Figure catalogue for section E: what each figure is, not where it is.
+#
+# A figure is found by its label on a visible sheet, never by its coordinates.
+# Labels are compared after normalisation (lowercase, no diacritics, punctuation as spaces),
+# with or without a trailing parenthesis ("Efect de diversificare (se scade)"), and must match
+# exactly: "SCR" does not match "SCR de bază". Exactly one matching row is required;
+# none or several make the figure a gap, with the reason.
+#
+# kind: money = amount, scaled to lei with the sheet's unit; ratio = fraction (cell formatted as %).
+# column: current = "31.12 an curent", prior = "31.12 an anterior" (see run.toml [columns]).
+
+[sheets.capital]
+names = ["Capital"]
+titles = ["Fonduri proprii și cerințe de capital"]
+
+[sheets.scr_module]
+names = ["SCR_module"]
+titles = ["Componentele SCR"]
+
+# --- Capital sheet ---------------------------------------------------------
+
+[[figure]]
+id = "own_funds_t1"
+description = "Fonduri proprii eligibile SCR, nivel 1"
+sheet = "capital"
+kind = "money"
+labels = ["Fonduri proprii eligibile SCR, nivel 1", "Fonduri proprii eligibile, nivel 1",
+          "Fonduri proprii de nivel 1", "Fonduri proprii nivel 1", "Nivel 1", "Nivelul 1"]
+
+[[figure]]
+id = "own_funds_t2"
+description = "Fonduri proprii eligibile SCR, nivel 2"
+sheet = "capital"
+kind = "money"
+labels = ["Fonduri proprii eligibile SCR, nivel 2", "Fonduri proprii eligibile, nivel 2",
+          "Fonduri proprii de nivel 2", "Fonduri proprii nivel 2", "Nivel 2", "Nivelul 2"]
+
+[[figure]]
+id = "own_funds_t3"
+description = "Fonduri proprii eligibile SCR, nivel 3"
+sheet = "capital"
+kind = "money"
+labels = ["Fonduri proprii eligibile SCR, nivel 3", "Fonduri proprii eligibile, nivel 3",
+          "Fonduri proprii de nivel 3", "Fonduri proprii nivel 3", "Nivel 3", "Nivelul 3"]
+
+[[figure]]
+id = "own_funds_total"
+description = "Fonduri proprii eligibile SCR, total"
+sheet = "capital"
+kind = "money"
+labels = ["Fonduri proprii eligibile SCR, total", "Fonduri proprii eligibile, total",
+          "Total fonduri proprii eligibile SCR", "Total fonduri proprii eligibile",
+          "Fonduri proprii eligibile SCR"]
+
+[[figure]]
+id = "scr"
+description = "Cerința de capital de solvabilitate (SCR), foaia Capital"
+sheet = "capital"
+kind = "money"
+labels = ["SCR", "Cerința de capital de solvabilitate", "Cerința de capital de solvabilitate (SCR)"]
+
+[[figure]]
+id = "scr_prior_col"
+description = "SCR la sfârșitul anului anterior, coloana «an anterior» din foaia Capital"
+sheet = "capital"
+column = "prior"
+kind = "money"
+labels = ["SCR", "Cerința de capital de solvabilitate", "Cerința de capital de solvabilitate (SCR)"]
+
+[[figure]]
+id = "mcr"
+description = "Cerința de capital minim (MCR)"
+sheet = "capital"
+kind = "money"
+labels = ["MCR", "Cerința de capital minim", "Cerința de capital minim (MCR)"]
+
+[[figure]]
+id = "solvency_ratio_reported"
+description = "Rata de solvabilitate, așa cum e introdusă în registru"
+sheet = "capital"
+kind = "ratio"
+labels = ["Rata de solvabilitate", "Rata de solvabilitate SCR", "Rata de acoperire a SCR"]
+
+# --- SCR_module sheet -------------------------------------------------------
+
+[[figure]]
+id = "scr_uw"
+description = "Riscul de subscriere pentru asigurarea generală"
+sheet = "scr_module"
+kind = "money"
+labels = ["Risc de subscriere asigurare generală", "Riscul de subscriere pentru asigurarea generală",
+          "Risc de subscriere"]
+
+[[figure]]
+id = "scr_mkt"
+description = "Riscul de piață"
+sheet = "scr_module"
+kind = "money"
+labels = ["Risc de piață", "Riscul de piață"]
+
+[[figure]]
+id = "scr_cpty"
+description = "Riscul de contrapartidă"
+sheet = "scr_module"
+kind = "money"
+labels = ["Risc de contrapartidă", "Riscul de contrapartidă", "Riscul de neîndeplinire a obligațiilor de către contrapartidă"]
+
+[[figure]]
+id = "scr_div"
+description = "Efectul de diversificare (semnul din registru nu contează: se scade)"
+sheet = "scr_module"
+kind = "money"
+labels = ["Diversificare", "Efect de diversificare", "Efectul de diversificare"]
+
+[[figure]]
+id = "bscr"
+description = "SCR de bază"
+sheet = "scr_module"
+kind = "money"
+labels = ["SCR de bază", "Cerința de capital de solvabilitate de bază", "BSCR"]
+
+[[figure]]
+id = "scr_op"
+description = "Riscul operațional"
+sheet = "scr_module"
+kind = "money"
+labels = ["Risc operațional", "Riscul operațional"]
+
+[[figure]]
+id = "scr_modules"
+description = "SCR, foaia SCR_module"
+sheet = "scr_module"
+kind = "money"
+labels = ["SCR", "Cerința de capital de solvabilitate", "Cerința de capital de solvabilitate (SCR)"]
+
+# --- Derived figures --------------------------------------------------------
+
+[[derived]]
+id = "solvency_ratio"
+description = "Rata de solvabilitate = fonduri proprii eligibile / SCR"
+numerator = "own_funds_total"
+denominator = "scr"
+reported = "solvency_ratio_reported"
+tolerance = "ratio"
+
+# --- Checks -----------------------------------------------------------------
+# sum: the terms add up to `equals` within the tolerance. "-abs:x" subtracts |x|.
+#      Terms listed in `optional` may be absent (the 2024 workbook has no tier 3 row).
+#      taint_total: if a term is not ok, the total is not trusted either.
+# range: min <= figure / of <= max.
+# Every current-year figure is also compared with the same figure in last year's workbook:
+# identical non-zero value = probably not updated; ratio outside run.toml magnitude = unit error.
+
+[[check]]
+id = "fonduri-proprii-niveluri"
+description = "nivel 1 + nivel 2 + nivel 3 = total fonduri proprii eligibile"
+type = "sum"
+terms = ["own_funds_t1", "own_funds_t2", "own_funds_t3"]
+optional = ["own_funds_t3"]
+equals = "own_funds_total"
+taint_total = true
+
+[[check]]
+id = "scr-doua-foi"
+description = "SCR din foaia Capital = SCR din foaia SCR_module"
+type = "sum"
+terms = ["scr"]
+equals = "scr_modules"
+
+[[check]]
+id = "scr-baza-din-module"
+description = "subscriere + piață + contrapartidă − diversificare = SCR de bază"
+type = "sum"
+terms = ["scr_uw", "scr_mkt", "scr_cpty", "-abs:scr_div"]
+equals = "bscr"
+
+[[check]]
+id = "scr-din-baza"
+description = "SCR de bază + risc operațional = SCR (foaia SCR_module)"
+type = "sum"
+terms = ["bscr", "scr_op"]
+equals = "scr_modules"
+
+[[check]]
+id = "mcr-coridor"
+description = "MCR între 25 % și 45 % din SCR (coridorul Solvabilitate II)"
+type = "range"
+figure = "mcr"
+of = "scr"
+min = "0.25"
+max = "0.45"
