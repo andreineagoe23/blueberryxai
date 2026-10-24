@@ -98,6 +98,11 @@ reproduce 10 sloturi din E (al 11-lea, nivelul 3, e o diferență așteptată) �
     repetă valoarea suspectă, pentru că ajung în draft (două teste existente au prins asta). Test nou:
     `test_gaps_in_the_draft_are_short`.
 
+17. **(24.10) `date/` nu trebuie mutat.** Programul citea deja intrările din folderul curent și scria în
+    `output/` de lângă `src/`, deci merge rulat din folderul `date/` al evaluatorului, oriunde ar fi:
+    `cd <cale>/date && python <proiect>/src/main.py`. README-ul spune asta acum, nu „mutați `date/` lângă `src/`”.
+    Testele citesc materialele din `<proiect>/date` sau din `SFCR_INPUT`; fără ele se sar, cu motivul.
+
 ## Bug-uri găsite și reparate
 
 | # | Ce | Cum s-a văzut | Reparație |

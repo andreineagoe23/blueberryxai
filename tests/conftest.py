@@ -1,3 +1,4 @@
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -7,6 +8,8 @@ import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
+# The assessment materials: date/ next to src/, or wherever SFCR_INPUT points.
+DATA = Path(os.environ.get("SFCR_INPUT", ROOT / "date")).expanduser()
 
 from sfcr.pipeline import analyse, load_config  # noqa: E402
 
@@ -19,7 +22,9 @@ def cfg():
 @pytest.fixture
 def inputs(tmp_path):
     """A copy of date/; tests break the copy of registru_2025.xlsx, never the original."""
-    for p in (ROOT / "date").iterdir():
+    if not (DATA / "registru_2025.xlsx").is_file():
+        pytest.skip(f"materialele nu sunt în {DATA}; setați SFCR_INPUT=<folderul date>")
+    for p in DATA.iterdir():
         if p.is_file() and not p.name.startswith("."):
             shutil.copy(p, tmp_path / p.name)
     return tmp_path

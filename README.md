@@ -18,25 +18,27 @@ A virtual environment is the simplest route on macOS, where Homebrew's Python re
 
 ## Run: the one command
 
-The zip does not include the assessment materials. Put the `date/` folder from the assessment next to `src/`
-(`<project>/date/registru_2025.xlsx`, and so on), then run from it:
+From the assessment's `date/` folder, wherever it is (the zip does not include it, and it need not move):
 
 ```
-cd date
-../.venv/bin/python ../src/main.py
+cd <path to>/date
+python <path to this project>/src/main.py
 ```
 
-With the venv activated (`source .venv/bin/activate`), the command is `python ../src/main.py`.
+`python` here is the venv's: activate it with `source <path to this project>/.venv/bin/activate`, or call
+`<path to this project>/.venv/bin/python` directly. If `date/` is placed next to `src/`, the command is
+simply `cd date && ../.venv/bin/python ../src/main.py`.
 
 The inputs are read from the current folder (`date/`), the configuration from `config/`, and everything is
-written to `output/` at the project root, next to `src/`. Exit code 0 means the files were written, and gaps
+written to `output/` in this project, next to `src/`. Exit code 0 means the files were written, and gaps
 and conflicts are reported inside them. Exit code 2 means `registru_2025.xlsx` was not found in the current
-folder (for example because the command was run from the project root).
+folder (for example because the command was not run from `date/`).
 
-To run on another version of the workbook, replace `date/registru_2025.xlsx` and run the same command. No
-code or config change is needed. Options `--input`, `--config` and `--out` override the three folders.
+To run on another version of the workbook, replace `registru_2025.xlsx` in `date/` and run the same command.
+No code or config change is needed. Options `--input`, `--config` and `--out` override the three folders.
 
-Tests: `.venv/bin/python -m pytest tests` (from the project root).
+Tests, from the project root: `.venv/bin/python -m pytest tests`. They read the materials from `date/` next
+to `src/`, or from the folder in `SFCR_INPUT`: `SFCR_INPUT=<path to>/date .venv/bin/python -m pytest tests`.
 
 ## What it writes (`output/`)
 
