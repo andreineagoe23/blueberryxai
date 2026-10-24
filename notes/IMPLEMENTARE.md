@@ -38,7 +38,7 @@ Testele: `.venv/bin/python -m pytest tests` (din rădăcină).
 | Rulare pe 21 de mutații agresive (foaie ștearsă, antete inversate, formulă circulară, SCR = 0, documente lipsă) | nicio cădere; cod de eroare doar dacă lipsește `registru_2025.xlsx` |
 | `README.md` nou (instalare, comanda, presupuneri) | gata; enunțul temei e în `notes/ASSESSMENT.md` |
 | `ai/AI.md` + exportul conversațiilor | **de făcut** |
-| Verificarea DESIGN.md față de implementare | afirmațiile corectate (back-test, 34 de registre stricate, coridorul MCR, regula nivelului 1); comprimat de la 2.348 la 2.093 cuvinte, diagrama sistemului de la 36 la 26 de rânduri: 4 pagini A4 la 11pt și interlinie 1,25, 5 pagini la interlinie 1,4; **de revizuit de Andrei** |
+| Verificarea DESIGN.md față de implementare | gata: afirmațiile corectate (back-test, 34 de registre stricate, coridorul MCR, regula nivelului 1); de la 2.348 la 1.897 cuvinte (tăieturile B, A, K, E, M, I, C alese de Andrei); 4 pagini A4 la 11pt și interlinie 1,4, cu 46 mm liberi pe ultima |
 
 Rezultatul pe datele reale: fonduri proprii 293,7 (nivel 1 262,4, nivel 2 31,2, nivel 3 „nu a deținut”);
 dividende 15,0; SCR 148,8, „în scădere față de 151,9 … în principal ca urmare a scăderii riscului de piață”;
