@@ -18,7 +18,8 @@ A virtual environment is the simplest route on macOS, where Homebrew's Python re
 
 ## Run: the one command
 
-From the `date/` folder:
+The zip does not include the assessment materials. Put the `date/` folder from the assessment next to `src/`
+(`<project>/date/registru_2025.xlsx`, and so on), then run from it:
 
 ```
 cd date

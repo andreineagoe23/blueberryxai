@@ -25,7 +25,7 @@ Pe macOS nu există `python` fără venv, doar `python3`, iar Python-ul din Home
 
 Testele: `.venv/bin/python -m pytest tests` (din rădăcină).
 
-`.venv/` nu intră în zip-ul final.
+`.venv/` nu intră în zip-ul final; nici `notes/` și `date/` (zip-ul conține ce cere tema, plus `requirements.txt` și `.git/`).
 
 ## Situația actuală (24.10.2026)
 
@@ -37,7 +37,7 @@ Testele: `.venv/bin/python -m pytest tests` (din rădăcină).
 | Teste: 48 (35 pe copii stricate ale registrului 2025, 8 pe decizii și dovezi, 5 pe format) | toate trec, pe Python 3.11 și 3.14 |
 | Rulare pe 21 de mutații agresive (foaie ștearsă, antete inversate, formulă circulară, SCR = 0, documente lipsă) | nicio cădere; cod de eroare doar dacă lipsește `registru_2025.xlsx` |
 | `README.md` nou (instalare, comanda, presupuneri) | gata; enunțul temei e în `notes/ASSESSMENT.md` |
-| `ai/AI.md` + exportul conversațiilor | **de făcut** |
+| `ai/AI.md` + exportul conversațiilor | gata: `AI.md` (o pagină); transcrierile brute JSONL ale celor 3 sesiuni în `ai/conversations/` (în `.gitignore`, pentru că au adresa de email; intră doar în zip); `/export` final al sesiunii 3 de adăugat |
 | Verificarea DESIGN.md față de implementare | gata: afirmațiile corectate (back-test, 34 de registre stricate, coridorul MCR, regula nivelului 1); de la 2.348 la 1.897 cuvinte (tăieturile B, A, K, E, M, I, C alese de Andrei); 4 pagini A4 la 11pt și interlinie 1,4, cu 46 mm liberi pe ultima |
 
 Rezultatul pe datele reale: fonduri proprii 293,7 (nivel 1 262,4, nivel 2 31,2, nivel 3 „nu a deținut”);
